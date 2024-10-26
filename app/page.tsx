@@ -1,10 +1,39 @@
-import Form from "next/form";
+import React from "react";
 
-export default function Page() {
+type Todo = {
+  userId: number;
+  id: number;
+  title: string;
+  completed: boolean;
+};
+async function fetchTodosWithDelay(): Promise<Todo[]> {
+  return new Promise((resolve) => {
+    setTimeout(async () => {
+      const response = await fetch(
+        "https://jsonplaceholder.typicode.com/todos",
+        {
+          cache: "no-store",
+        }
+      );
+      const todos: Todo[] = await response.json();
+      resolve(todos);
+    }, 3000);
+  });
+}
+
+export default async function Page() {
+  const todos = await fetchTodosWithDelay();
+
   return (
-    <Form action="/search">
-      <input name="query" />
-      <button type="submit">Submit</button>
-    </Form>
+    <div>
+      <h1>List</h1>
+      <ul>
+        {todos.map((todo) => (
+          <li key={todo.id}>
+            {todo.title} - {todo.completed ? "Completed" : "Not Completed"}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

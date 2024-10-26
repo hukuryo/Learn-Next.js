@@ -1,11 +1,8 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+const nextConfig = {
   experimental: {
-    typedRoutes: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
+    staleTimes: {
+      dynamic: 50,
+    },
   },
 };
 
