@@ -1,4 +1,3 @@
-import { cookies } from "next/headers";
 import React from "react";
 
 type Todo = {
@@ -23,9 +22,6 @@ async function fetchTodosWithDelay(): Promise<Todo[]> {
 }
 
 export default async function Page() {
-  const cookieStore = await cookies();
-  const token = cookieStore.get("token");
-  console.log(token);
   const todos = await fetchTodosWithDelay();
 
   return (
