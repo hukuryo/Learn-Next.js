@@ -1,9 +1,9 @@
-const nextConfig = {
+import { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
   experimental: {
-    staleTimes: {
-      dynamic: 50,
-    },
+    reactCompiler: true,
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
