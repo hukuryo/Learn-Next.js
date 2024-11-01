@@ -1,39 +1,7 @@
-import React from "react";
-
-type Todo = {
-  userId: number;
-  id: number;
-  title: string;
-  completed: boolean;
-};
-async function fetchTodosWithDelay(): Promise<Todo[]> {
-  return new Promise((resolve) => {
-    setTimeout(async () => {
-      const response = await fetch(
-        "https://jsonplaceholder.typicode.com/todos",
-        {
-          cache: "no-store",
-        }
-      );
-      const todos: Todo[] = await response.json();
-      resolve(todos);
-    }, 3000);
-  });
-}
+"use cache";
+import { unstable_cacheLife as cacheLife } from "next/cache";
 
 export default async function Page() {
-  const todos = await fetchTodosWithDelay();
-
-  return (
-    <div>
-      <h1>List</h1>
-      <ul>
-        {todos.map((todo) => (
-          <li key={todo.id}>
-            {todo.title} - {todo.completed ? "Completed" : "Not Completed"}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+  cacheLife("hours");
+  return <div>Page</div>;
 }

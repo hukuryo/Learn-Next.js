@@ -1,8 +1,13 @@
-import { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+const nextConfig = {
   experimental: {
-    reactCompiler: true,
+    dynamicIO: true,
+    cacheLife: {
+      days: {
+        stale: 3600, // 1 hour
+        revalidate: 900, // 15 minutes
+        expire: 86400, // 1 day
+      },
+    },
   },
 };
 
