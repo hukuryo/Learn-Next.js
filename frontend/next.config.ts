@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   experimental: {
     ppr: "incremental",
-    optimizePackageImports: ["icon-library"],
+    optimizePackageImports: ["react-icons/*"],
   },
 };
 
