@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { AiFillAliwangwang } from "react-icons/ai";
 
 type Todo = {
@@ -43,7 +43,9 @@ export default async function Page() {
         <AiFillAliwangwang />
         List
       </h1>
-      <TodoList todos={todos} />
+      <Suspense>
+        <TodoList todos={todos} />
+      </Suspense>
     </div>
   );
 }
