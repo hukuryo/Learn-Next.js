@@ -4,7 +4,10 @@ import React, { Suspense } from "react";
 export default async function Page() {
   return (
     <div>
-      <Link href="/">home</Link>
+      <h1>Dashboard</h1>
+      <Link href="/" prefetch={false}>
+        Home
+      </Link>
     </div>
   );
 }
