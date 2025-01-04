@@ -2,8 +2,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   experimental: {
-    optimizePackageImports: ["react-icons/*"],
-    authInterrupts: true,
+    ppr: true,
+    dynamicIO: true,
+    reactCompiler: true,
   },
 };
 
