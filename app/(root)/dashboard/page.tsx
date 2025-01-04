@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { Suspense } from "react";
+// import React, { Suspense } from "react";
 
 export default async function Page() {
   return (
