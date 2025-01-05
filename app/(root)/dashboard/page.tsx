@@ -1,13 +1,11 @@
-import Link from "next/link";
-// import React, { Suspense } from "react";
+// import { getName } from "../api";
 
 export default async function Page() {
   return (
     <div>
-      <h1>Dashboard</h1>
-      <Link href="/" prefetch={false}>
-        Home
-      </Link>
+      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Button
+      </button>
     </div>
   );
 }
