@@ -1,4 +1,9 @@
 import "../globals.css";
+import { Geist } from "next/font/google";
+
+const geist = Geist({
+  subsets: ["latin"],
+});
 
 export default async function RootLayout({
   children,
@@ -6,7 +11,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html>
+    <html lang="ja" className={geist.className}>
       <body>{children}</body>
     </html>
   );
