@@ -1,4 +1,4 @@
-import { CustomSuspense } from "@/util/CustomSuspense";
+import { CustomSuspense } from "@/src/util/CustomSuspense";
 import { UserCard } from "../../components/UserCard";
 import { getCount, getName } from "./api";
 
