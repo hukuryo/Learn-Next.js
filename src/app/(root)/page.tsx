@@ -1,7 +1,6 @@
-import { CustomSuspense } from "@/src/util/CustomSuspense";
-
 import { getCount, getName } from "./api";
 import { UserCard } from "./_user-card";
+import { CustomSuspense } from "@/src/util/custom-suspense";
 
 export default async function Page() {
   return (
