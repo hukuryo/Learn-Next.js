@@ -5,9 +5,9 @@ export async function getName() {
   return name as string;
 }
 
-export async function getCount() {
+export async function getUserList() {
   await new Promise((resolve) => setTimeout(resolve, 1000));
-  const res = await fetch(`http://localhost:3000/api/count`);
-  const count = await res.json();
-  return count as number;
+  const res = await fetch(`http://localhost:3000/api/userList`);
+  const users = await res.json();
+  return users;
 }

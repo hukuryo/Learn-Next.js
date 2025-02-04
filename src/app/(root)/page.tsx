@@ -1,8 +1,22 @@
-import { getCount, getName } from "./api";
+import { getUserList, getName } from "./api";
 import { UserCard } from "./_user-card";
 import { CustomSuspense } from "@/src/util/custom-suspense";
+import Link from "next/link";
 
-export default async function Page() {
+async function UserList() {
+  const users = await getUserList();
+  return (
+    <ul className="list-inside list-disc border p-4">
+      {users.map((user: { id: string; name: string }) => (
+        <li key={user.id}>
+          <Link href={`/users/${user.id}`}>{user.name}</Link>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+export default function Page() {
   return (
     <>
       <UserCard>
@@ -12,9 +26,8 @@ export default async function Page() {
         </CustomSuspense>
       </UserCard>
       <UserCard>
-        投稿数：
-        <CustomSuspense height={15} width={100}>
-          {getCount()}
+        <CustomSuspense height={350} width="100%">
+          <UserList />
         </CustomSuspense>
       </UserCard>
     </>
