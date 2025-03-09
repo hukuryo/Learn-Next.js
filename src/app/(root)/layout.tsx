@@ -1,5 +1,5 @@
 import { Metadata, Viewport } from "next";
-import "../globals.css";
+import "../../css/globals.css";
 import { Geist } from "next/font/google";
 
 const geist = Geist({
