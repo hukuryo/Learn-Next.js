@@ -4,7 +4,6 @@ const nextConfig: NextConfig = {
   experimental: {
     reactCompiler: true,
     viewTransition: true,
-    nodeMiddleware: true,
   },
 };
 
