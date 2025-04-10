@@ -19,3 +19,21 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes indicator-bar {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 90%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@layer utilities {
+  .indicator {
+    animation: indicator-bar 800ms ease-in-out forwards;
+  }
+}
