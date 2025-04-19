@@ -6,14 +6,7 @@ import Link from "next/link";
 export default function Header() {
   return (
     <header>
-      <Link
-        href="/dashboard"
-        onNavigate={() => {
-          console.log("Navigation...");
-        }}
-      >
-        Dashboard
-      </Link>
+      <Link href="/dashboard">Dashboard</Link>
     </header>
   );
 }
