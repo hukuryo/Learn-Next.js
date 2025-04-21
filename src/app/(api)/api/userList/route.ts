@@ -6,5 +6,8 @@ export async function GET() {
   }
 
   const users = await response.json();
-  return Response.json(users);
+  return new Response(JSON.stringify(users), {
+    status: 200,
+    headers: { "Content-Type": "application/json" },
+  });
 }

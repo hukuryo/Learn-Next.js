@@ -10,5 +10,8 @@ export async function GET() {
     "山口",
   ];
   const name = names[Math.floor(Math.random() * names.length)];
-  return Response.json(name);
+  return new Response(JSON.stringify(name), {
+    status: 200,
+    headers: { "Content-Type": "application/json" },
+  });
 }
