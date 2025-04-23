@@ -1,42 +1,13 @@
-import { getUserList, getName } from "./api";
-import { UserCard } from "./_user-card";
-import { CustomSuspense } from "@/src/util/custom-suspense";
-import Link from "next/link";
-import { z } from "zod";
+import { auth, currentUser } from "@clerk/nextjs/server";
 
-const UserSchema = z.object({
-  id: z.number(),
-  name: z.string(),
-});
+export default async function Page() {
+  const { userId } = await auth();
 
-async function UserList() {
-  const users = await getUserList();
-  const parsedUsers = z.array(UserSchema).parse(users);
-  return (
-    <ul className="list-inside list-disc border p-4">
-      {parsedUsers.map((user) => (
-        <li key={user.id}>
-          <Link href={`/users/${user.id}`}>{user.name}</Link>
-        </li>
-      ))}
-    </ul>
-  );
-}
+  if (!userId) {
+    return <div>Sign in to view this page</div>;
+  }
 
-export default function Page() {
-  return (
-    <>
-      <UserCard>
-        名前：
-        <CustomSuspense height={15} width={100}>
-          {getName()}
-        </CustomSuspense>
-      </UserCard>
-      <UserCard>
-        <CustomSuspense height={350} width="100%">
-          <UserList />
-        </CustomSuspense>
-      </UserCard>
-    </>
-  );
+  const user = await currentUser();
+
+  return <div>Welcome, {user ? user.firstName : "Guest"}!</div>;
 }
