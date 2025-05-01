@@ -1,39 +1,33 @@
-import { getCurrentUser } from "@/src/lib/getCurrentUser";
+"use client";
+
 import Link from "next/link";
-import { unstable_ViewTransition as ViewTransition } from "react";
+import { UserList } from "@/src/components/UserList";
+import { SearchForm } from "@/src/components/SearchForm";
+import { useState } from "react";
 
-export default async function Page() {
-  const { userId, user } = await getCurrentUser();
+export default function Page() {
+  const [searchQuery, setSearchQuery] = useState("");
 
-  if (!userId) {
-    return <div>Sign in to view this page</div>;
-  }
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+  };
 
   return (
     <div className="p-4 max-w-[960px] m-auto">
       <h1 className="text-4xl py-8 font-medium">
-        {"View Transition Next.js Examples"}
+        {"User Directory"}
       </h1>
-      <div>Welcome, {user ? user.firstName : "Guest"}!</div>
+      
+      <SearchForm searchQuery={searchQuery} onSearchChange={handleSearchChange} />
+      <UserList searchQuery={searchQuery} />
 
-      <p>
-        <span className="mr-2">
-          {`Use React `}
-          <b className="text-blue-400">{`Experimental `}</b>
-
-          <ViewTransition name="experimental-label">
-            <span className="inline-block font-bold text-gray-700">{`<ViewTransitions>`}</span>
-          </ViewTransition>
-
-          {` API in Next.js.`}
-        </span>
-      </p>
-
-      <li className="py-2">
-        <h2 className="text-xl underline">
-          <Link href="/dashboard">{`Floating Elements Transition`}</Link>
-        </h2>
-      </li>
+      <div className="mt-8">
+        <li className="py-2">
+          <h2 className="text-xl underline">
+            <Link href="/dashboard">{`Go to Dashboard`}</Link>
+          </h2>
+        </li>
+      </div>
     </div>
   );
 }
