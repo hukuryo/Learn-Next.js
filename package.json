@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ai-sdk/vercel": "^0.0.1",
     "@clerk/nextjs": "^6.17.0",
+    "ai": "^4.3.16",
     "babel-plugin-react-compiler": "^19.0.0-beta-6fc168f-20241025",
     "bcrypt": "^5.1.1",
     "better-auth": "^1.2.7",
